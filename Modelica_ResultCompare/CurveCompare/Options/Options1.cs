@@ -15,7 +15,7 @@ namespace CurveCompare
     /// </summary>
     public class Options1 : IOptions
     {
-        double val, valT;
+        double val;
         Axes axes;
         bool formerBaseAndRatio;
         double baseX, baseY, ratio;
@@ -34,12 +34,6 @@ namespace CurveCompare
         {
             get { return val; }
         }
-
-        public double ValueT
-        {
-            get { return valT; }
-        }
-
         /// <summary>
         /// States, if value is x (half width of rectangle) or y (half height of rectangle).
         /// </summary>
@@ -160,10 +154,9 @@ namespace CurveCompare
         /// Always use normal drawing methods, never fast drawing methods: drawFastAbove = 0<para/>
         /// Always draw points: drawPointsBelow = Int32.MaxValue
         /// </para></remarks>
-        public Options1(double value, double valueT, Axes axes)
+        public Options1(double value, Axes axes)
         {
             this.val = value;
-            this.valT = ValueT;
             this.axes = axes;
             relativity = Relativity.Relative;
             baseX = Double.NaN;
