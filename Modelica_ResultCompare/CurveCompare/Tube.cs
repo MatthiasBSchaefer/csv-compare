@@ -173,11 +173,11 @@ namespace CurveCompare
 
             for (int i = 0; i < targetTimeLine.Length; i++)
             {
-                if (targetTimeLine[i] > sourceTimeLine[sourceTimeLine.Length - 1])//Prevent extrapolating
-                {
-                    Array.Resize<double>(ref TargetValues, i);
-                    break;
-                }
+                //if (targetTimeLine[i] > sourceTimeLine[sourceTimeLine.Length - 1])//Prevent extrapolating at the end
+                //{
+                //   //Array.Resize<double>(ref TargetValues, i);
+                //    break;
+                //}
 
                 x = targetTimeLine[i];
 
