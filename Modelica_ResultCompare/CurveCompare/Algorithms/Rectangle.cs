@@ -81,12 +81,18 @@ namespace CurveCompare.Algorithms
 
             // ignore identical point at the beginning
             b = 0;
+            
+            // calculate slope at the beginning
             while (b + 1 < reference.Count && (reference.X[b] - reference.X[b + 1] == 0) && (reference.Y[b] - reference.Y[b + 1] == 0))
                 b++;
-
+            if (reference.X[b + 1] != reference.X[b])
+                m0 = (reference.Y[b + 1] - reference.Y[b]) / (reference.X[b + 1] - reference.X[b]);
+            else
+                m0 = 0;
+            
             // add point down left
             LX.Add(reference.X[b] - size.X);
-            LY.Add(reference.Y[b] - size.Y);
+            LY.Add(reference.Y[b] - size.Y - 2* m0 * size.X);
 
             if (b + 1 < reference.Count)
             {
@@ -195,9 +201,14 @@ namespace CurveCompare.Algorithms
                 }
             }
 
+            // calculate slope at the end
+            if (reference.X[reference.Count - 1] != reference.X[reference.Count - 2])
+                m0 = (reference.Y[reference.Count - 1] - reference.Y[reference.Count - 2]) / (reference.X[reference.Count - 1] - reference.X[reference.Count - 2]);
+            else
+                m0 = 0;
             // add point down right
             LX.Add(reference.X[reference.Count - 1] + size.X);
-            LY.Add(reference.Y[reference.Count - 1] - size.Y);
+            LY.Add(reference.Y[reference.Count - 1] - size.Y + 2 * m0 * size.X);
 
             // -------------------------------------------------------------------------------------------------------------
             // -------------- 2. Remove points and add intersection points in case of backward order -----------------------
@@ -238,10 +249,16 @@ namespace CurveCompare.Algorithms
             b = 0;
             while (b + 1 < reference.Count && (reference.X[b] - reference.X[b + 1] == 0) && (reference.Y[b] - reference.Y[b + 1] == 0))
                 b++;
+            
+            // calculate slope at the beginning
+            if (reference.X[b + 1] != reference.X[b])
+                m0 = (reference.Y[b + 1] - reference.Y[b]) / (reference.X[b + 1] - reference.X[b]);
+            else
+                m0 = 0;
 
             // add point top left
             UX.Add(reference.X[b] - size.X);
-            UY.Add(reference.Y[b] + size.Y);
+            UY.Add(reference.Y[b] + size.Y - 2*m0*size.X);
 
             if (b + 1 < reference.Count)
             {
@@ -350,9 +367,15 @@ namespace CurveCompare.Algorithms
                 }
             }
 
-            // add point top right
-            UX.Add(reference.X[reference.Count - 1] + size.X);
-            UY.Add(reference.Y[reference.Count - 1] + size.Y);
+            
+            // calculate slope at the end
+            if (reference.X[reference.Count - 1] != reference.X[reference.Count - 2])
+                m0 = (reference.Y[reference.Count - 1] - reference.Y[reference.Count - 2]) / (reference.X[reference.Count - 1] - reference.X[reference.Count - 2]);
+            else
+                m0 = 0;
+            // add point down right
+            LX.Add(reference.X[reference.Count - 1] + size.X);
+            LY.Add(reference.Y[reference.Count - 1] - size.Y + 2 * m0 * size.X);
 
             // ---------------------------------------------------------------------------------------------------------
             // -------------- 2. Remove points and add intersection points in case of backward order -------------------
