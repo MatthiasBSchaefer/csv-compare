@@ -374,8 +374,8 @@ namespace CurveCompare.Algorithms
             else
                 m0 = 0;
             // add point down right
-            LX.Add(reference.X[reference.Count - 1] + size.X);
-            LY.Add(reference.Y[reference.Count - 1] - size.Y + 2 * m0 * size.X);
+            UX.Add(reference.X[reference.Count - 1] + size.X);
+            UY.Add(reference.Y[reference.Count - 1] + size.Y + 2 * m0 * size.X);
 
             // ---------------------------------------------------------------------------------------------------------
             // -------------- 2. Remove points and add intersection points in case of backward order -------------------
