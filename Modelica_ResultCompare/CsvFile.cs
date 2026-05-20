@@ -376,6 +376,7 @@ namespace CsvCompare
                     PrepareCharts(reference, compareCurve, report.Errors, rep, report, res, options.UseBitmapPlots);
             }
             rep.Tolerance = _dRangeDelta;
+            rep.TimeTolerance = _dRangeDeltaT;
 
             string sResult = "na";
 
