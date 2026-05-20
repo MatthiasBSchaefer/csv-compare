@@ -355,7 +355,6 @@ namespace CsvCompare
                     size = null;
                     tube = new Tube(size);
                     log.WriteLine(LogLevel.Warning, "{0} not found in \"{1}\", skipping checks.", res.Key, this._fileName);
-                    continue;
                 }
                 else
                 {
@@ -371,6 +370,7 @@ namespace CsvCompare
                     {
                         log.Error("Error in the calculation of the tubes. Skipping {0}", res.Key);
                         rep.Chart.Add(new Chart() { Title = res.Key, Errors = 1 });
+                        continue;
                     }
 
                     if (reference.X.Length < compareCurve.X.Length)
