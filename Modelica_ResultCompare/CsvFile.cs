@@ -371,7 +371,6 @@ namespace CsvCompare
                     {
                         log.Error("Error in the calculation of the tubes. Skipping {0}", res.Key);
                         rep.Chart.Add(new Chart() { Title = res.Key, Errors = 1 });
-                        continue;
                     }
 
                     if (reference.X.Length < compareCurve.X.Length)
