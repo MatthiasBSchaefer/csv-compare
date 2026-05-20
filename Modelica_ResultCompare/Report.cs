@@ -539,8 +539,7 @@ namespace CsvCompare
                     writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Verbosity:</td><td>{0}</td></tr>", options.Verbosity.ToString(CultureInfo.CurrentCulture));
 
                     if (null != options.Tolerance)
-                        writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Tolerance:</td><td>{0}</td></tr>", options.Tolerance);
-                    
+                        writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Tolerance:</td><td>{0}</td></tr>", options.Tolerance);                    
                     if (!String.IsNullOrEmpty(options.Logfile))
                     {
                         writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Logfile:</td><td><a href=\"file:///{0}\">{0}</a></td></tr>", options.Logfile);
@@ -663,7 +662,6 @@ namespace CsvCompare
             get { return _tolerance; }
             set { _tolerance = value; }
         }
-
         public string Message { get { return _message; } set { _message = value; } }
         public string FileName { get { return _path; } set { _path = value; } }
         public string MetaPath { get { return _metaPath; } set { _metaPath = value; } }

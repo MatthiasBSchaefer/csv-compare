@@ -32,7 +32,7 @@ namespace CsvCompare
         public Dictionary<string, List<double>> Results { get { return _values; } }
         /// This value can be used to produce a offset between base and comparison values
         public double RangeDelta { get { return _dRangeDelta; } set { _dRangeDelta = value; } }
-        /// This value can be used to produce a offset between base and comparison values
+        /// This value enables/disables relative error differences in the error graph
         public bool ShowRelativeErrors
         {
             get { return _bShowRelativeErrors; }
@@ -57,8 +57,7 @@ namespace CsvCompare
                     //understand 2e-2 etc.
                     if (!Double.TryParse(options.Tolerance, out _dRangeDelta))
                         log.WriteLine(LogLevel.Warning, "could not parse given tolerance argument: \"{0}\", using default \"{1}\".", options.Tolerance, _dRangeDelta);
-            }
-            
+            }            
             if (File.Exists(fileName))
             {
                 _fileName = Path.GetFullPath(fileName);
@@ -389,7 +388,6 @@ namespace CsvCompare
                     {
                         trimmedReference = reference;
                         trimmedCompareCurve = compareCurve;
-
                     }
                     
                     // The actual nominal attribute should be used, but is unfortunately unavailable in the CSV files.
@@ -400,7 +398,6 @@ namespace CsvCompare
                     const bool useLegacyBaseAndRatio = false;
                     size = new TubeSize(trimmedReference, defaultNominalValue, useLegacyBaseAndRatio);
                     size.Calculate(_dRangeDelta, Axes.X, Relativity.Relative);
-
                     tube = new Tube(size);
                     var calcResult = tube.Calculate(reference);
                     bool calcSuccess = calcResult.Item2;
