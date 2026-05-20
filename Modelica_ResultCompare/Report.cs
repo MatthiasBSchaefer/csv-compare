@@ -541,8 +541,8 @@ namespace CsvCompare
                     if (null != options.Tolerance)
                         writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Tolerance:</td><td>{0}</td></tr>", options.Tolerance);
                     
-                    if (null != options.TimeTolerance)
-                        writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Tolerance:</td><td>{0}</td></tr>", options.TimeTolerance);
+                    if (null != options.TimeTolerance && options.Tolerance != options.TimeTolerance)
+                        writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Time Tolerance:</td><td>{0}</td></tr>", options.TimeTolerance);
                     
                     if (!String.IsNullOrEmpty(options.Logfile))
                     {
