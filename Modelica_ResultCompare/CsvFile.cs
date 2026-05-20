@@ -57,7 +57,8 @@ namespace CsvCompare
                     //understand 2e-2 etc.
                     if (!Double.TryParse(options.Tolerance, out _dRangeDelta))
                         log.WriteLine(LogLevel.Warning, "could not parse given tolerance argument: \"{0}\", using default \"{1}\".", options.Tolerance, _dRangeDelta);
-            }            
+            }
+
             if (File.Exists(fileName))
             {
                 _fileName = Path.GetFullPath(fileName);

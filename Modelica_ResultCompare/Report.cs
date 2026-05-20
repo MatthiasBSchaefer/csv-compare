@@ -540,6 +540,7 @@ namespace CsvCompare
 
                     if (null != options.Tolerance)
                         writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Tolerance:</td><td>{0}</td></tr>", options.Tolerance);                    
+
                     if (!String.IsNullOrEmpty(options.Logfile))
                     {
                         writer.WriteLine("	<tr><td colspan=\"2\" class=\"header\">Logfile:</td><td><a href=\"file:///{0}\">{0}</a></td></tr>", options.Logfile);
