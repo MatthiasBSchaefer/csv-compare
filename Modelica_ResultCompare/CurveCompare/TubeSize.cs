@@ -14,7 +14,7 @@ namespace CurveCompare
     /// </summary>
     public class TubeSize
     {
-        private double x, y, baseX, baseY, ratio;
+        private double x, y, baseX, baseY, ratio, mean, width;
         private Curve reference;
         bool successful;
 
@@ -81,7 +81,8 @@ namespace CurveCompare
             if (formerBaseAndRatio)
                 SetFormerBaseAndRatio(nominalValue);
             else
-                SetStandardBaseAndRatio(nominalValue);
+                // SetStandardBaseAndRatio(nominalValue);
+                SetNewBaseAndRatio(nominalValue);
             successful = false;
         }
         /// <summary>
@@ -98,6 +99,27 @@ namespace CurveCompare
                 baseX = 1;
             // set baseY
             baseY = Math.Max(reference.Y.Max() - reference.Y.Min(), nominalValue);
+            // set ratio
+            if (baseX != 0)
+                ratio = baseY / baseX;
+            else
+                ratio = 0;
+        }
+
+        private void SetNewBaseAndRatio(double nominalValue)
+        {
+            // set baseX
+            baseX = reference.X.Max() - reference.X.Min(); //reference.X.Max() - reference.X.Min() + Math.Abs(reference.X.Min());
+            if (baseX == 0) // nonsense case, no data
+                baseX = Math.Abs(reference.X.Max());
+            if (baseX == 0) // nonsense case, no data
+                baseX = 1;
+            // set baseY
+            width = Math.Abs((reference.Y.Max() - reference.Y.Min()) / 2); // half the range of the curve in y- direction
+            mean = Math.Abs((reference.Y.Max() + reference.Y.Min()) / 4); // half the median of the curve in y- direction
+
+
+            baseY = width+mean+nominalValue;
             // set ratio
             if (baseX != 0)
                 ratio = baseY / baseX;
