@@ -119,7 +119,7 @@ namespace CurveCompare
             mean = Math.Abs((reference.Y.Max() + reference.Y.Min()) / 4); // half the median of the curve in y- direction
 
 
-            baseY = width+mean+nominalValue;
+            baseY = Math.Max( width + mean, nominalValue);
             // set ratio
             if (baseX != 0)
                 ratio = baseY / baseX;

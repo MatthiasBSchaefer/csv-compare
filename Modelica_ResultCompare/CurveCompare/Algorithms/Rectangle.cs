@@ -105,9 +105,9 @@ namespace CurveCompare.Algorithms
                     m0 = (reference.Y[b + 1] - reference.Y[b]) / (reference.X[b + 1] - reference.X[b]);
                 else
                     if (s0 > 0)
-                    m0 = Double.PositiveInfinity;
-                else
-                    m0 = Double.NegativeInfinity;
+                        m0 = Double.PositiveInfinity;
+                    else
+                        m0 = Double.NegativeInfinity;
 
                 if (s0 == 1)
                 {
@@ -131,9 +131,9 @@ namespace CurveCompare.Algorithms
                         m1 = (reference.Y[i + 1] - reference.Y[i]) / (reference.X[i + 1] - reference.X[i]);
                     else
                         if (s1 > 0)
-                        m1 = Double.PositiveInfinity;
-                    else
-                        m1 = Double.NegativeInfinity;
+                            m1 = Double.PositiveInfinity;
+                        else
+                            m1 = Double.NegativeInfinity;
 
                     // add no point for equal slopes of reference curve
                     if (!(m0 == m1))
@@ -277,9 +277,9 @@ namespace CurveCompare.Algorithms
                     m0 = (reference.Y[b + 1] - reference.Y[b]) / (reference.X[b + 1] - reference.X[b]);
                 else
                     if (s0 > 0)
-                    m0 = Double.PositiveInfinity;
-                else
-                    m0 = Double.NegativeInfinity;
+                        m0 = Double.PositiveInfinity;
+                    else
+                        m0 = Double.NegativeInfinity;
 
                 if (s0 == -1)
                 {
@@ -303,9 +303,9 @@ namespace CurveCompare.Algorithms
                         m1 = (reference.Y[i + 1] - reference.Y[i]) / (reference.X[i + 1] - reference.X[i]);
                     else
                         if (s1 > 0)
-                        m1 = Double.PositiveInfinity;
-                    else
-                        m1 = Double.NegativeInfinity;
+                            m1 = Double.PositiveInfinity;
+                        else
+                            m1 = Double.NegativeInfinity;
 
                     // add no point for equal slopes of reference curve
                     if (!(m0 == m1))
