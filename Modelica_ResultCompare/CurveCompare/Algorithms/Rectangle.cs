@@ -85,6 +85,10 @@ namespace CurveCompare.Algorithms
             // calculate slope at the beginning
             while (b + 1 < reference.Count && (reference.X[b] - reference.X[b + 1] == 0) && (reference.Y[b] - reference.Y[b + 1] == 0))
                 b++;
+
+            if (reference.X.Length == b + 1)
+                b--;
+
             if (reference.X[b + 1] != reference.X[b])
                 m0 = (reference.Y[b + 1] - reference.Y[b]) / (reference.X[b + 1] - reference.X[b]);
             else
@@ -255,6 +259,9 @@ namespace CurveCompare.Algorithms
             b = 0;
             while (b + 1 < reference.Count && (reference.X[b] - reference.X[b + 1] == 0) && (reference.Y[b] - reference.Y[b + 1] == 0))
                 b++;
+
+            if (reference.X.Length == b + 1)
+                b--;
 
             // calculate slope at the beginning
             if (reference.X[b + 1] != reference.X[b])
